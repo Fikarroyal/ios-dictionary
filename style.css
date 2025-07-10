@@ -1,0 +1,576 @@
+/* Import Google Fonts - Inter (Elegant & Modern) */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+:root {
+    /* Palet Warna Utama (Hijau Tua & Putih) */
+    --primary-color: #0A6847; /* Hijau tua untuk aksen */
+    --primary-dark: #074C32; /* Hijau lebih pekat untuk hover */
+    --text-color: #1A1A1A;   /* Teks Gelap Default (hampir hitam) */
+    --bg-light: #FFFFFF;    /* Latar Belakang Sangat Terang (putih) */
+    --bg-content-light: #F5F5F5; /* Latar belakang konten ringan (sedikit abu-abu) */
+    --card-bg-light: #FFFFFF;    /* Latar Belakang Kartu Terang */
+    --bg-dark: #1C1C1E;      /* Latar Belakang Gelap (Mirip iOS Dark Mode) */
+    --card-bg-dark: #2C2C2E;     /* Latar Belakang Kartu Gelap */
+    --border-color: #E0E0E0; /* Warna Border Terang */
+    --shadow-light: rgba(0,0,0,0.05); /* Shadow Ringan */
+    --font-primary: 'Inter', sans-serif; /* Font Utama */
+
+    /* Warna Tambahan untuk Teks Sekunder/Detail */
+    --text-secondary: #666666;
+    --text-tertiary: #999999;
+}
+
+/* Reset Dasar */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--font-primary);
+    line-height: 1.6;
+    color: var(--text-color);
+    background-color: var(--bg-light);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    overflow-y: auto; /* Allow scrolling for content */
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Container Utama */
+.container {
+    display: flex;
+    flex-direction: column;
+    width: 90%;
+    max-width: 900px;
+    min-height: 85vh;
+    background-color: var(--card-bg-light);
+    border-radius: 12px;
+    box-shadow: 0 10px 40px var(--shadow-light);
+    padding: 30px;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Header Aplikasi */
+.app-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+    border-bottom: 1px solid var(--border-color);
+    padding-bottom: 20px;
+}
+
+.app-header h1 {
+    font-size: 2.5em;
+    color: var(--primary-color); /* Hijau tua */
+    font-weight: 700;
+}
+
+/* Dark Mode Toggle Button (posisi relatif terhadap header) */
+.dark-mode-toggle {
+    background-color: var(--bg-content-light); /* Menggunakan warna latar belakang konten */
+    border: none;
+    border-radius: 50%;
+    width: 45px;
+    height: 45px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    font-size: 1.3em;
+    color: var(--text-color);
+    box-shadow: 0 2px 5px var(--shadow-light);
+    transition: all 0.3s ease;
+}
+
+.dark-mode-toggle:hover {
+    background-color: var(--border-color); /* Sedikit lebih gelap saat hover */
+}
+
+/* Main Content Area */
+.main-content {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Search Section */
+.search-section {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 30px;
+}
+
+#searchInput {
+    flex-grow: 1;
+    padding: 15px 20px;
+    font-size: 1.1em;
+    border: 1px solid var(--border-color);
+    border-radius: 10px;
+    outline: none;
+    background-color: var(--bg-content-light); /* Menggunakan warna latar belakang konten */
+    color: var(--text-color);
+    transition: border-color 0.3s ease, background-color 0.3s ease, color 0.3s ease;
+}
+
+#searchInput:focus {
+    border-color: var(--primary-color); /* Hijau tua */
+    box-shadow: 0 0 0 4px rgba(10, 104, 71, 0.2); /* Hijau tua, transparan */
+}
+
+.search-btn {
+    background-color: var(--primary-color); /* Hijau tua */
+    color: #fff; /* Teks putih pada tombol gelap */
+    border: none;
+    border-radius: 10px;
+    padding: 15px 20px;
+    font-size: 1.1em;
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.search-btn:hover {
+    background-color: var(--primary-dark); /* Hijau lebih pekat */
+}
+
+/* Results Area */
+.results-area {
+    background-color: var(--bg-content-light); /* Menggunakan warna latar belakang konten */
+    border-radius: 10px;
+    padding: 25px;
+    min-height: 250px;
+    border: 1px solid var(--border-color);
+    margin-bottom: 30px;
+    overflow-y: auto;
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+.welcome-message, .error-message {
+    font-size: 1.1em;
+    color: var(--text-secondary); /* Warna teks sekunder */
+    text-align: center;
+    padding: 20px;
+}
+
+.error-message {
+    color: var(--primary-color); /* Hijau tua untuk error */
+    font-weight: 500;
+}
+
+/* Word Card Styling */
+.word-card {
+    margin-bottom: 30px;
+}
+
+.word-card:last-child {
+    margin-bottom: 0;
+}
+
+.word-title {
+    font-size: 2.2em;
+    color: var(--primary-color); /* Hijau tua */
+    margin-bottom: 10px;
+    display: flex;
+    align-items: baseline;
+    flex-wrap: wrap;
+    line-height: 1.2;
+}
+
+.word-title .phonetics {
+    font-size: 0.6em;
+    color: var(--text-tertiary); /* Warna teks tersier */
+    margin-left: 10px;
+    font-weight: 400;
+}
+
+.audio-playback {
+    margin-bottom: 20px;
+}
+
+.audio-playback audio {
+    width: 100%;
+    max-width: 300px;
+    outline: none;
+    /* Filter agar audio player terlihat hijau tua dan ikon putih */
+    /* Menggunakan hue-rotate untuk mencoba mendapatkan warna hijau dari warna default, dan brightness/contrast untuk kecerahan */
+    /* Atau, jika ingin lebih sederhana, bisa saja tidak menggunakan filter sama sekali jika warna panel sudah disetel langsung */
+    /* Saya akan mencoba kombinasi untuk mendapatkan tampilan seperti gambar yang Anda berikan */
+    filter: none; /* Hapus filter grayscale agar warna dari CSS diterapkan */
+    /* Mungkin filter ini menyebabkan warna hitam. Coba nonaktifkan atau sesuaikan. */
+    transition: filter 0.3s ease;
+}
+/* Kustomisasi warna kontrol audio untuk Firefox dan Webkit (Chrome/Safari) */
+.audio-playback audio::-webkit-media-controls-panel {
+    background-color: var(--primary-color); /* Hijau tua */
+    color: #FFFFFF; /* Ikon dan teks panel putih */
+    border-radius: 10px; /* Menambah border-radius agar lebih seperti gambar */
+}
+.audio-playback audio::-webkit-media-controls-play-button,
+.audio-playback audio::-webkit-media-controls-volume-slider,
+.audio-playback audio::-webkit-media-controls-timeline {
+    color: #FFFFFF; /* Warna ikon/slider/timeline di kontrol audio menjadi putih */
+}
+
+
+.meaning-section {
+    margin-bottom: 25px;
+    padding-left: 15px;
+    border-left: 4px solid var(--primary-dark); /* Hijau lebih pekat */
+}
+
+.part-of-speech {
+    font-size: 1.4em;
+    color: var(--text-color);
+    margin-bottom: 15px;
+    font-weight: 600;
+    position: relative;
+    padding-bottom: 5px;
+}
+
+.part-of-speech::after {
+    content: '';
+    display: block;
+    width: 50px;
+    height: 2px;
+    background-color: var(--primary-color); /* Hijau tua */
+    position: absolute;
+    bottom: 0;
+    left: 0;
+}
+
+.definitions {
+    list-style: none;
+    counter-reset: definition-counter;
+    margin-bottom: 15px;
+}
+
+.definitions li {
+    counter-increment: definition-counter;
+    margin-bottom: 10px;
+    position: relative;
+    padding-left: 25px;
+}
+
+.definitions li::before {
+    content: counter(definition-counter) ".";
+    position: absolute;
+    left: 0;
+    top: 0;
+    color: var(--primary-color); /* Hijau tua */
+    font-weight: 600;
+    font-size: 0.9em;
+}
+
+.definition-text {
+    font-size: 1em;
+    color: var(--text-color);
+}
+
+.example-usage {
+    font-style: italic;
+    color: var(--text-secondary); /* Warna teks sekunder */
+    margin-top: 10px;
+    padding-left: 25px;
+    font-size: 0.95em;
+}
+
+.synonym-section, .antonym-section {
+    margin-top: 15px;
+    padding-left: 15px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    align-items: center;
+}
+
+.synonym-section .label, .antonym-section .label {
+    font-weight: 600;
+    color: var(--primary-color); /* Hijau tua */
+    margin-right: 5px;
+}
+
+.synonyms, .antonyms {
+    color: var(--text-secondary); /* Warna teks sekunder */
+    font-size: 0.95em;
+}
+
+/* History Section */
+.history-section {
+    margin-top: 20px;
+    border-top: 1px solid var(--border-color);
+    padding-top: 20px;
+}
+
+.history-section h3 {
+    font-size: 1.5em;
+    color: var(--text-color);
+    margin-bottom: 15px;
+}
+
+.search-history-list {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.search-history-list li {
+    display: flex;
+    align-items: center;
+    background-color: var(--bg-content-light); /* Menggunakan warna latar belakang konten */
+    border: 1px solid var(--border-color);
+    border-radius: 20px;
+    padding: 8px 15px;
+    font-size: 0.9em;
+    transition: all 0.2s ease;
+    color: var(--text-secondary); /* Warna teks sekunder */
+}
+
+.search-history-list li:hover {
+    background-color: var(--border-color); /* Sedikit lebih gelap saat hover */
+}
+
+.search-history-list li a {
+    text-decoration: none;
+    color: inherit;
+    margin-right: 8px;
+    cursor: pointer;
+}
+
+.history-delete-btn {
+    background: none;
+    border: none;
+    color: var(--text-tertiary); /* Warna teks tersier */
+    font-size: 0.8em;
+    cursor: pointer;
+    margin-left: auto;
+    padding: 2px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    transition: color 0.2s ease, background-color 0.2s ease;
+}
+
+.history-delete-btn:hover {
+    color: var(--primary-color); /* Hijau tua untuk hover delete */
+    background-color: rgba(10, 104, 71, 0.1); /* Hijau transparan saat hover */
+}
+
+
+/* --- Responsive Design --- */
+@media (max-width: 768px) {
+    body {
+        min-height: 100vh;
+        align-items: flex-start;
+        padding: 20px 0;
+    }
+    .container {
+        width: 100%;
+        min-height: 95vh;
+        border-radius: 0;
+        box-shadow: none;
+        padding: 20px;
+    }
+    .app-header {
+        flex-direction: column;
+        align-items: flex-start;
+        margin-bottom: 20px;
+    }
+    .app-header h1 {
+        font-size: 2em;
+        margin-bottom: 15px;
+    }
+    .dark-mode-toggle {
+        position: static;
+        margin-left: auto;
+    }
+    .search-section {
+        flex-direction: column;
+    }
+    .search-btn {
+        width: 100%;
+    }
+    .results-area {
+        padding: 15px;
+        min-height: 200px;
+    }
+    .word-title {
+        font-size: 1.8em;
+    }
+    .part-of-speech {
+        font-size: 1.2em;
+    }
+    .meaning-section {
+        padding-left: 10px;
+    }
+    .history-section {
+        margin-top: 15px;
+        padding-top: 15px;
+    }
+    .search-history-list li {
+        padding: 6px 12px;
+        font-size: 0.85em;
+    }
+    .history-delete-btn {
+        font-size: 0.7em;
+    }
+}
+
+/* --- Mode Gelap (Dark Mode) --- */
+body.dark-mode {
+    background-color: var(--bg-dark); /* #1C1C1E */
+    color: #EFEFEF; /* Teks terang di dark mode */
+}
+
+body.dark-mode .container {
+    background-color: var(--card-bg-dark); /* #2C2C2E */
+    box-shadow: 0 10px 40px rgba(0,0,0,0.5);
+}
+
+body.dark-mode .app-header {
+    border-bottom-color: #3A3A3C;
+}
+
+body.dark-mode .app-header h1 {
+    color: #5CB85C; /* Hijau cerah untuk dark mode */
+}
+
+body.dark-mode .dark-mode-toggle {
+    background-color: #3A3A3C;
+    color: #EFEFEF;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+}
+
+body.dark-mode .dark-mode-toggle:hover {
+    background-color: #4A4A4C;
+}
+
+body.dark-mode #searchInput {
+    background-color: #222224;
+    border-color: #444446;
+    color: #EFEFEF;
+}
+
+body.dark-mode #searchInput:focus {
+    border-color: #5CB85C; /* Hijau cerah */
+    box-shadow: 0 0 0 4px rgba(92, 184, 92, 0.2);
+}
+
+body.dark-mode .search-btn {
+    background-color: #5CB85C; /* Hijau cerah */
+    color: #1A1A1A; /* Teks gelap di tombol terang */
+}
+
+body.dark-mode .search-btn:hover {
+    background-color: #4CAE4C; /* Sedikit lebih gelap */
+}
+
+body.dark-mode .results-area {
+    background-color: #222224;
+    border-color: #444446;
+    color: #EFEFEF;
+}
+
+body.dark-mode .welcome-message,
+body.dark-mode .error-message {
+    color: #BBBBBB; /* Teks sekunder gelap */
+}
+body.dark-mode .error-message {
+    color: #5CB85C; /* Hijau cerah untuk error di dark mode */
+}
+
+body.dark-mode .word-title {
+    color: #5CB85C; /* Hijau cerah untuk dark mode */
+}
+
+body.dark-mode .word-title .phonetics {
+    color: #BBBBBB;
+}
+
+body.dark-mode .audio-playback audio {
+    /* Filter agar audio player terlihat abu-abu di dark mode */
+    filter: grayscale(100%) brightness(120%) contrast(100%); 
+}
+body.dark-mode .audio-playback audio::-webkit-media-controls-panel {
+    background-color: #5CB85C; /* Hijau cerah untuk dark mode */
+    color: #EFEFEF; /* Ikon dan teks panel off-white */
+    border-radius: 10px; /* Menambah border-radius agar lebih seperti gambar */
+}
+body.dark-mode .audio-playback audio::-webkit-media-controls-play-button,
+body.dark-mode .audio-playback audio::-webkit-media-controls-volume-slider,
+body.dark-mode .audio-playback audio::-webkit-media-controls-timeline {
+    color: #EFEFEF; /* Warna ikon/slider/timeline di dark mode menjadi off-white */
+}
+
+body.dark-mode .meaning-section {
+    border-left-color: #BBBBBB; /* Abu-abu lebih terang */
+}
+
+body.dark-mode .part-of-speech {
+    color: #EFEFEF;
+}
+
+body.dark-mode .part-of-speech::after {
+    background-color: #5CB85C; /* Hijau cerah untuk dark mode */
+}
+
+body.dark-mode .definitions li::before {
+    color: #5CB85C; /* Hijau cerah untuk dark mode */
+}
+
+body.dark-mode .definition-text {
+    color: #EFEFEF;
+}
+
+body.dark-mode .example-usage {
+    color: #BBBBBB;
+}
+
+body.dark-mode .synonym-section .label,
+body.dark-mode .antonym-section .label {
+    color: #5CB85C; /* Hijau cerah untuk dark mode */
+}
+
+body.dark-mode .synonyms,
+body.dark-mode .antonyms {
+    color: #BBBBBB;
+}
+
+body.dark-mode .history-section {
+    border-top-color: #3A3A3C;
+}
+
+body.dark-mode .history-section h3 {
+    color: #EFEFEF;
+}
+
+body.dark-mode .search-history-list li {
+    background-color: #363638;
+    border-color: #444446;
+    color: #EFEFEF;
+}
+
+body.dark-mode .search-history-list li:hover {
+    background-color: #4A4A4C;
+}
+
+body.dark-mode .search-history-list li a {
+    color: inherit;
+}
+
+body.dark-mode .history-delete-btn {
+    color: #BBBBBB;
+}
+
+body.dark-mode .history-delete-btn:hover {
+    color: #5CB85C; /* Hijau cerah */
+    background-color: rgba(92, 184, 92, 0.1);
+}
